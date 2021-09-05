@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AccountService } from '../_services/account.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -11,17 +13,21 @@ export class HomeComponent implements OnInit {
   model: any = {}
   registerMode = false;
   constructor(
-    public accountService: AccountService
+    public accountService: AccountService,
+    private router: Router,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
   }
 
   login() {
+    debugger;
     this.accountService.login(this.model).subscribe(response => {
-      console.log(response);
+      this.router.navigateByUrl('/members');
     }, error => {
       console.log(error);
+      this.toastr.error(error.error);
     })
   }
 

@@ -1,1 +1,82 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    font-family: 'IRANSansWeb','IRANYekanWeb',Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.homebody {
+    background-image:url(./assets/img/men-talking-in-video-call-conference-social-distancing-vector.jpg);
+    background-position:center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+    background-clip: content-box;
+    box-shadow: none;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    background-color: white;
+    overflow: hidden;
+
+  }
+  @font-face {
+    font-family: 'IRANSansWeb';
+    font-style: normal;
+    src: url(./assets/fonts/IRANSansWebBlack.eot)format('.eot');
+    src: url(./assets/fonts/IRANSansWebBlack.ttf)format('.ttf');
+    src: url(./assets/fonts/IRANSansWebBlack.woff)format('.woff');
+    src: url(./assets/fonts/IRANSansWebBlack.woff2)format('.woff2');
+  }
+  @font-face {
+    font-family: 'IRANYekanWeb';
+    font-style: normal;
+    src: url(./assets/fonts/iranyekanwebblackfanum.eot)format('.eot');
+    src: url(./assets/fonts/iranyekanwebblackfanum.ttf)format('.ttf');
+    src: url(./assets/fonts/iranyekanwebblackfanum.woff)format('.woff');
+    src: url(./assets/fonts/iranyekanwebextrablackfanum.eot)format('.eot');
+    src: url(./assets/fonts/iranyekanwebextrablackfanum.ttf)format('.ttf');
+    src: url(./assets/fonts/iranyekanwebextrablackfanum.woff)format('.woff');
+  }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ffffff!important;
+    opacity: 1; /* Firefox */
+    font-size:18px!important;
+}
+.form-login {
+    background-color: rgba(0,0,0,0.55);
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    color:white;
+    box-shadow:0 1px 0 #cfcfcf;
+}
+.form-control{
+    background:transparent!important;
+    color:white!important;
+    font-size: 18px!important;
+}
+h1{
+    color:white!important;
+}
+h4 { 
+ border:0 solid #fff; 
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+.text-white{
+    color: white!important;
+}
+
+.footer p{
+    font-size: 18px;
+}
