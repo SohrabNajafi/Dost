@@ -1,30 +1,42 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
     <div class="container">
-        <a class="navbar-brand" routerLink='/' routerLinkActive='active'>دوست</a>
-        <ul class="navbar-nav mr-auto">
-            <ng-container *ngIf="accountService.currentUser$ | async">
+        <a class="navbar-brand" id="dost" routerLink='/' routerLinkActive='active'>دوست</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <ng-container *ngIf="accountService.currentUser$ | async">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink='/members' routerLinkActive='active'>افراد</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink='/lists' routerLinkActive='active'>لیست ها</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink='/messages' routerLinkActive='active'>پیام ها</a>
+                    </li>
+                </ng-container>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink='/members' routerLinkActive='active'>افراد</a>
+                    <a class="nav-link" routerLink='/errors' routerLinkActive='active'>خطاها</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink='/lists' routerLinkActive='active'>لیست ها</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink='/messages' routerLinkActive='active'>پیام ها</a>
-                </li>
-            </ng-container>
-        </ul>
+            </ul>
 
-        <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-            <a class="dropdown-toggle text-light" dropdownToggle>خوش اومدی {{user.username | titlecase}}</a>
-            <div class="dropdown-menu mt-3" *dropdownMenu>
-                <a class="dropdown-item">ویرایش پروفایل</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item " (click)="logout()">خروج</a>
+            <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+                <a class="dropdown-toggle text-light" dropdownToggle>خوش اومدی {{user.username | titlecase}}</a>
+                <div class="dropdown-menu mt-3" *dropdownMenu>
+                    <a class="dropdown-item">ویرایش پروفایل</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item " (click)="logout()">خروج</a>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm"
+</nav>
+
+<!-- <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm"
             class="form-inline mt-2 mt-md-0" (ngSubmit)="login()" autocomplete="off">
             <input name="username" [(ngModel)]="model.username" class="form-control mr-sm-2" type="text"
                 placeholder="Username">
@@ -32,6 +44,3 @@
                 placeholder="Password">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
         </form> -->
-    </div>
-
-</nav>

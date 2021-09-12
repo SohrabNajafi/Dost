@@ -1,8 +1,8 @@
-<div class="container">
+<div class="HomePic">
     <div *ngIf="!registerMode" class="row justify-content-center " style='text-align: center;'>
         <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm"
             class="form-inline mt-2 mt-md-0" (ngSubmit)="login()" autocomplete="off">
-            <div class="row">
+            <div class="row Homecontainer">
                 <div class="col-md-offset-5 col-md-10 text-center">
                     <div class="form-login w-100"><br>
                         <h4>دوسته تو پیدا کن </h4>
@@ -20,11 +20,12 @@
                                         class="fa fa-sign-in"></i></button>
                             </div>
                             <div class="group-btn w-100">
-                                <button (click)="registerToggle()" class="btn btn-primary btn-sm p-2 w-75 my-2">ثبت
+                                <button type="button" (click)="registerToggle()"
+                                    class="btn btn-primary btn-sm p-2 w-75 my-2">ثبت
                                     نام</button>
                             </div>
                             <div class="group-btn w-100">
-                                <button class="btn btn-info btn-sm w-75 p-2 my-2">درباره برنامه</button>
+                                <button type="button" class="btn btn-info btn-sm w-75 p-2 my-2">درباره برنامه</button>
                             </div>
                         </section>
                     </div>
@@ -34,10 +35,8 @@
     </div>
 
     <div *ngIf="registerMode">
-        <div class="row justify-content-center">
-
+        <div class="row justify-content-center Homecontainer">
             <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
-
         </div>
     </div>
 </div>
