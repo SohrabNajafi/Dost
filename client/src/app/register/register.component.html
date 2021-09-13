@@ -1,26 +1,27 @@
 <form #registerForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="register()" autocomplete="off">
     <div class="row">
-        <div class="col-md-offset-5 col-md-10 text-center">
+        <div class="col-md-offset-4 col-md-9 text-center">
             <div class="form-login w-100"><br>
                 <h4>دوسته تو پیدا کن </h4>
                 <br>
 
                 <input name="username" [(ngModel)]="model.username"
-                    class="form-control input-sm chat-input my-2 w-75 text-center" type="text" placeholder="نام کاربری">
+                    class="form-control input-sm chat-input my-2 w-100 text-center" type="text"
+                    placeholder="نام کاربری">
                 <input name="password" [(ngModel)]="model.password"
-                    class="form-control input-sm chat-input my-2 w-75 text-center" type="password"
+                    class="form-control input-sm chat-input my-2 w-100 text-center" type="password"
                     placeholder="رمز عبور">
 
 
                 <br><br>
                 <section class="text-center ">
                     <div class="group-btn w-100">
-                        <button type="submit" class="btn btn-success btn-sm p-2 w-75 my-2">ثبت
+                        <button type="submit" class="btn btn-success btn-sm p-2 w-100 my-2">ثبت
                             نام</button>
                     </div>
                     <div class="group-btn w-100">
                         <button (click)="cancel()" type="button"
-                            class="btn btn-primary btn-sm p-2 w-75 my-2">لغو</button>
+                            class="btn btn-primary btn-sm p-2 w-100 my-2">لغو</button>
                     </div>
 
                 </section>

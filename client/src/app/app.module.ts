@@ -20,6 +20,7 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     TestErrorsComponent,
     NotFoundComponent,
     ServerErrorComponent,
+
   ],
   imports: [
     BrowserModule,

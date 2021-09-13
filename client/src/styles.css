@@ -59,8 +59,7 @@
 }
 
 .origindiv{
-    margin-top: 64px;
-    margin-left: 5px;
+    margin-top: 63px;
  }
 
 .HomePic {
@@ -97,10 +96,10 @@
 }
 .form-login {
     background-color: rgba(0,0,0,0.55);
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
     border-radius: 15px;
     border-color:#d2d2d2;
     border-width: 5px;
@@ -123,7 +122,7 @@ h4 {
 }
 
 .form-control {
-    border-radius: 10px;
+    border-radius: 5px;
 }
 .text-white{
     color: white!important;
