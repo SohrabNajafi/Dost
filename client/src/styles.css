@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
 @font-face {
     font-family: "IRANYekan_Light";
     src: url('./assets/fonts/iranyekanweblightfanum.eot');
@@ -133,7 +134,7 @@ h4 {
 }
 
 .Homecontainer {
-    padding: 90px;
+    padding:70px;
 }
 
 
