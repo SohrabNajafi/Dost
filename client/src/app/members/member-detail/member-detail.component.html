@@ -1,13 +1,13 @@
-<div class="row" *ngIf="member">
-    <div class="col-4">
+<div class="row px-1 " dir="rtl" *ngIf="member" style="width: 98%;">
+    <div class="col-12 col-md-5 col-xl-3 col-lg-4 col-sm-11">
         <div class="card">
             <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}"
                 class="card-img-top img-thumbnail">
             <div class="card-body">
-                <div>
+                <!-- <div>
                     <strong>مکان:</strong>
                     <p>{{member.city}}, {{member.country}}</p>
-                </div>
+                </div> -->
                 <div>
                     <strong>سن:</strong>
                     <p>{{member.age}}</p>
@@ -16,10 +16,10 @@
                     <strong>آخرین بازدید :</strong>
                     <p>{{member.lastActive}}</p>
                 </div>
-                <div>
+                <!-- <div>
                     <strong>تاریخ عضویت :</strong>
                     <p>{{member.created}}</p>
-                </div>
+                </div> -->
             </div>
             <div class="card-footer">
                 <div class="btn-group d-flex">
@@ -30,16 +30,25 @@
         </div>
     </div>
 
-    <div class="col-8">
-        <tabset class="member-tabset">
+    <div class="col-12 col-md-6 col-xl-8 col-lg-7 col-sm-11">
+        <tabset class="member-tabset text-justify ">
             <tab heading='درباره {{member.knownAs}}'>
-                <h4>درباره</h4>
+                <h4 class="text-right">درباره</h4>
                 <p>{{member.introduction}}</p>
-                <h4>Looking for</h4>
-                <p>{{member.lookingFor}}</p>
+                <br>
+                <h4 class="text-right">به دنبال</h4>
+                <!-- <p>{{member.lookingFor}}</p> -->
+                <p class="pl-3">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+                    است. چاپگرها
+                    و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
+                    کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
+                    آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه
+                    ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که
+                    تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی
+                    دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
             </tab>
-            <tab heading='Interests'>
-                <h4>Interests</h4>
+            <tab heading='علاقه مندی ها'>
+                <h4 class="text-right"> علاقه ها</h4>
                 <p>{{member.interests}}</p>
             </tab>
             <tab heading='عکس ها'>
@@ -47,7 +56,7 @@
                     style="display: inline-block; margin-bottom: 20px;"></ngx-gallery>
             </tab>
             <tab heading='پیام ها'>
-                <p>Messages will go here</p>
+                <p>پیام ها این جا قرار خواهند گرفت</p>
             </tab>
         </tabset>
     </div>
