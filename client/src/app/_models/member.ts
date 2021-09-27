@@ -8,6 +8,7 @@ export interface Member {
     knownAs: string;
     created: Date;
     lastActive: Date;
+    lastActiveP: string;
     gender: string;
     introduction: string;
     lookingFor: string;

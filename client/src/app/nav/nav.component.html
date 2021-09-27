@@ -26,7 +26,7 @@
             <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
                 <a class="dropdown-toggle text-light" dropdownToggle>خوش اومدی {{user.username | titlecase}}</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
-                    <a class="dropdown-item">ویرایش پروفایل</a>
+                    <a routerLink='/member/edit' class="dropdown-item">ویرایش پروفایل</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item " (click)="logout()">خروج</a>
                 </div>

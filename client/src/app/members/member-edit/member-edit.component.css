@@ -1,0 +1,24 @@
+.card{
+    align-items: center;
+}
+
+.img-thumbnail {
+    margin: 38px;
+    width: 75%;
+    height: 75%;
+}
+
+.card-body {
+    padding: 0 25px;
+    text-align: center;
+}
+
+.card-footer {
+    text-align: right;
+    padding: 10px 15px;
+    background-color: #fff;
+    border-top: none;
+} 
+.textdark{
+color: black !important;
+}

@@ -81,6 +81,23 @@
 
   }
 
+  .memberList{
+    background-image:url(./assets/img/15.jpg);
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+    background-color: white;
+    overflow: hidden;
+    background-attachment: fixed;
+    background-clip: content-box;
+    background-position:center;
+    box-shadow: none;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    height: 90vh;
+    object-fit: cover;
+
+  }
+
 
 #dost{
     font-size: 25px;

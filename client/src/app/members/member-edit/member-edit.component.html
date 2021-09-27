@@ -1,0 +1,68 @@
+<div class="row px-1 " dir="rtl" *ngIf="member" style="width: 98%;">
+    <div class="col-12 col-md-5 col-xl-3 col-lg-4 col-sm-11 text-center mt-3">
+        <h1 class="textdark"> پروفایل شما </h1>
+    </div>
+    <div class="col-12 col-md-6 col-xl-8 col-lg-7 col-sm-11 mt-3 text-center">
+        <div class="alert alert-info" *ngIf="editForm.dirty">
+            <strong>توجه کن: </strong> پروفایلتو تغییر دادی . یادت نره ذخیرش کنی ها...
+        </div>
+    </div>
+    <div class="col-12 col-md-5 col-xl-3 col-lg-4 col-sm-11 mt-3">
+        <div class="card">
+            <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}"
+                class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <div>
+                    <strong>مکان:</strong>
+                    <p>{{member.city}}, {{member.country}}</p>
+                </div>
+                <div>
+                    <strong>سن:</strong>
+                    <p>{{member.age}}</p>
+                </div>
+                <div>
+                    <strong>آخرین بازدید :</strong>
+                    <p>{{member.lastActive}}</p>
+                </div>
+                <!-- <div>
+                    <strong> اولین ورود:</strong>
+                    <p>{{member.created}}</p>
+                </div> -->
+            </div>
+            <div class="card-footer w-100">
+                <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-success btn-block">
+                    ذخیره اش کن </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-xl-8 col-lg-7 col-sm-11">
+        <tabset class="member-tabset text-justify">
+            <tab heading='درباره {{member.knownAs}}'>
+                <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
+                    <h4 class="text-right mt-5">درباره </h4>
+                    <textarea class="form-control textdark" [(ngModel)]="member.introduction" name="introduction"
+                        rows="6"></textarea>
+                    <h4 class="text-right mt-3"> به دنبال</h4>
+                    <textarea class="form-control textdark" [(ngModel)]="member.lookingFor" name="lookingFor"
+                        rows="6"></textarea>
+                    <h4 class="text-right mt-3">علاقه ها</h4>
+                    <textarea class="form-control textdark" [(ngModel)]="member.interests" name="interests"
+                        rows="6"></textarea>
+                    <h4 class="text-right mt-3"> اطلاعات مکان: </h4>
+                    <div class="form-inline">
+                        <label for="city">کشور: </label>
+                        <input [(ngModel)]="member.city" type="text" name="city" class="form-control mx-2 textdark">
+                        <label for="city">شهر: </label>
+                        <input [(ngModel)]="member.country" type="text" name="country"
+                            class="form-control mx-2 textdark">
+                    </div>
+                </form>
+
+            </tab>
+            <tab heading='ویراش گالری'>
+                <p>به زودی</p>
+            </tab>
+        </tabset>
+    </div>
+</div>

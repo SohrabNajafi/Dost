@@ -23,7 +23,7 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
-            if (await UserExists(registerDto.Username)) return BadRequest("این نام کاربری موجود می باشد.");
+            if (await UserExists(registerDto.Username)) return BadRequest(" . این نام کاربری تکراری  می باشد");
 
             using var hmac = new HMACSHA512();
 
