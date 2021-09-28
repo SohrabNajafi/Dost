@@ -22,7 +22,7 @@
                 </div>
                 <div>
                     <strong>آخرین بازدید :</strong>
-                    <p>{{member.lastActive}}</p>
+                    <p>{{member.lastActiveP}}</p>
                 </div>
                 <!-- <div>
                     <strong> اولین ورود:</strong>
@@ -61,7 +61,7 @@
 
             </tab>
             <tab heading='ویراش گالری'>
-                <p>به زودی</p>
+                <app-photo-editor [member]="member"></app-photo-editor>
             </tab>
         </tabset>
     </div>
