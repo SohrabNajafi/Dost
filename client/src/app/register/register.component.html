@@ -1,23 +1,56 @@
-<form #registerForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="register()" autocomplete="off">
-    <div class="row">
-        <div class="col-md-offset-4 col-md-9 text-center">
+<form class="form-inline mt-2 mt-md-0" [formGroup]='registerForm' (ngSubmit)="registerForm.valid && register()"
+    autocomplete="off">
+    <div class="row Homecontainer w-100 text-center">
+        <div class="col-12 col-md-12 col-xl-5 col-lg-12 col-sm-12 col-md-offset-4 mx-auto">
             <div class="form-login w-100"><br>
                 <h4>دوسته تو پیدا کن </h4>
                 <br>
 
-                <input name="username" [(ngModel)]="model.username"
+                <!-- <input name="username" [(ngModel)]="model.username"
                     class="form-control input-sm chat-input my-2 w-100 text-center" type="text"
                     placeholder="نام کاربری">
                 <input name="password" [(ngModel)]="model.password"
                     class="form-control input-sm chat-input my-2 w-100 text-center" type="password"
-                    placeholder="رمز عبور">
+                    placeholder="رمز عبور"> -->
+                <div class="form-group" dir="rtl">
+                    <label class="control-label" style="margin-right: 10px;">جنسیت: </label>
+                    <label class="radio-inline">
+                        <input type="radio" value='male' formControlName='gender'> مرد
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" value='female' formControlName='gender' class="ml-3"> زن
+                    </label>
+                </div>
+                <app-text-input [formControl]='$any(registerForm).controls["username"]' [label]='"نام "'>
+                </app-text-input>
+                <app-text-input [formControl]='$any(registerForm).controls["knownAs"]' [label]='"معروف به"'>
+                </app-text-input>
+                <app-date-input [formControl]='$any(registerForm).controls["dateOfBirth"]' [label]='"تاریخ تولد"'
+                    [maxDate]='maxDate'></app-date-input>
+                <app-text-input [formControl]='$any(registerForm).controls["city"]' [label]='"شهر"'></app-text-input>
+                <app-text-input [formControl]='$any(registerForm).controls["country"]' [label]='"کشور"'>
+                </app-text-input>
+                <app-text-input [formControl]='$any(registerForm).controls["password"]' [label]='"رمز عبور"'
+                    [type]='"password"'>
+                </app-text-input>
+                <app-text-input [formControl]='$any(registerForm).controls["confirmPassword"]'
+                    [label]='" تکرار رمز عبور"' [type]='"password"'>
+                </app-text-input>
 
+                <div class="row" *ngIf="validationErrors.length > 0">
+                    <ul class="text-danger">
+                        <li *ngFor="let error of validationErrors">
+                            {{error}}
+                        </li>
+                    </ul>
+                </div>
 
                 <br><br>
                 <section class="text-center ">
                     <div class="group-btn w-100">
-                        <button type="submit" class="btn btn-success btn-sm p-2 w-100 my-2">ثبت
-                            نام</button>
+                        <!-- <button type="submit" class="btn btn-success btn-sm p-2 w-100 my-2"></button> -->
+                        <button [disabled]='!registerForm.valid' class="btn btn-success mr-2 btn-sm p-2 w-100 my-2"
+                            type="submit">ثبت نام</button>
                     </div>
                     <div class="group-btn w-100">
                         <button (click)="cancel()" type="button"

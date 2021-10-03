@@ -17,6 +17,7 @@ namespace API.Helpers
                 .ForMember(dest => dest.LastActiveP, opt => opt.MapFrom(src => src.LastActive.ToShamsiWithTime()));
             CreateMap<Photo, PhotoDto>();
             CreateMap<MemberUpdateDto, AppUser>();
+            CreateMap<RegisterDto, AppUser>();
         }
     }
 }

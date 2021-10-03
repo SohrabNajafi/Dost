@@ -1,0 +1,15 @@
+<div class="form-group " dir="rtl">
+    <input [class.is-invalid]="ngControl.touched && ngControl.invalid" type={{type}}
+        class="form-control text-center input-sm chat-input my-2 w-100" [formControl]="$any(ngControl).control"
+        placeholder={{label}}>
+    <div *ngIf="$any(ngControl).control.errors?.required" class="invalid-feedback"> {{label}} یادت نره !!!</div>
+    <div *ngIf="$any(ngControl).control.errors?.minlength" class="invalid-feedback">
+        {{label}} نمی تونه کمتر از {{$any(ngControl).control.errors.minlength['requiredLength']}} باشد.
+    </div>
+    <div *ngIf="$any(ngControl).control.errors?.maxlength" class="invalid-feedback">
+        {{label}} نمی تونه بیشتر از {{$any(ngControl).control.errors.maxlength['requiredLength']}} باشد .
+    </div>
+    <div *ngIf="$any(ngControl).control.errors?.isMatching" class="invalid-feedback">
+        رمز عبور با تکرارش برابر نیست !!!
+    </div>
+</div>

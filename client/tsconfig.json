@@ -30,5 +30,6 @@
   },
   "compilerOptions": {
     "strictPropertyInitialization": false,
+    "allowSyntheticDefaultImports": true,
   }
 }

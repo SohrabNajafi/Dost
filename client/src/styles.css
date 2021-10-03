@@ -75,7 +75,7 @@
     box-shadow: none;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    height: 90vh;
+    height: 100%;
     object-fit: cover;
 
 
