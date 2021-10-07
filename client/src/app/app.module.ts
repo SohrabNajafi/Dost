@@ -30,6 +30,7 @@ import { NgPersianDatepickerModule } from 'ng-persian-datepicker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MaterialPersianDateAdapter, PERSIAN_DATE_FORMATS } from './shared/material.persian-date.adapter';
+import { PersianTimeAgoPipe } from 'persian-time-ago-pipe';
 
 
 
@@ -66,6 +67,7 @@ import { MaterialPersianDateAdapter, PERSIAN_DATE_FORMATS } from './shared/mater
     DatepickerModule,
     NgPersianDatepickerModule,
     MatDatepickerModule,
+
 
   ],
   providers: [

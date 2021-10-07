@@ -82,7 +82,8 @@
   }
 
   .memberList{
-    background-image:url(./assets/img/15.jpg);
+    background-color: snow;
+    /* background-image:url(./assets/img/15.jpg); */
     background-repeat: no-repeat;
     background-size:100% 100%;
     background-color: white;

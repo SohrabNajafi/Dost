@@ -18,7 +18,7 @@
                 </div>
                 <!-- <div>
                     <strong>تاریخ عضویت :</strong>
-                    <p>{{member.created}}</p>
+                    <p>{{member.created | date: 'dd MMM yyyy'}}</p>
                 </div> -->
             </div>
             <div class="card-footer">
@@ -36,7 +36,7 @@
                 <h4 class="text-right">درباره</h4>
                 <p>{{member.introduction}}</p>
                 <br>
-                <h4 class="text-right">به دنبال</h4>
+                <h4 class="text-right">مشتاق برای </h4>
                 <p>{{member.lookingFor}}</p>
             </tab>
             <tab heading='علاقه مندی ها'>
