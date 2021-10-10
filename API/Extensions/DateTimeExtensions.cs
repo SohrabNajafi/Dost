@@ -19,13 +19,14 @@ namespace API.Extensions
             return p.GetYear(Date) + "/" + p.GetMonth(Date).ToString("00") + "/" + p.GetDayOfMonth(Date).ToString("00");
         }
 
-        public static string ToShamsiWithTime(this DateTime Date)
+        public static string ToShamsiWithTime(this DateTime? Date)
         {
+            if (Date.Value == null) return "_";
             PersianCalendar p = new PersianCalendar();
-            return p.GetYear(Date) + "/" + p.GetMonth(Date).ToString("00")
-            + "/" + p.GetDayOfMonth(Date).ToString("00")
-            + "  " + p.GetHour(Date).ToString("00") + ":" + p.GetMinute(Date).ToString("00")
-            + ":" + p.GetSecond(Date).ToString("00");
+            return p.GetYear(Date.Value) + "/" + p.GetMonth(Date.Value).ToString("00")
+            + "/" + p.GetDayOfMonth(Date.Value).ToString("00")
+            + "  " + p.GetHour(Date.Value).ToString("00") + ":" + p.GetMinute(Date.Value).ToString("00")
+            + ":" + p.GetSecond(Date.Value).ToString("00");
         }
 
         public static DateTime ToMiladi(this string SDate)
