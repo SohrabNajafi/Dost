@@ -164,7 +164,7 @@ h4 {
   }
 
   .nav-tabs > li.open, .member-tabset > .nav-tabs > li:hover {
-    border-bottom: 4px solid #fbcdcf;
+    border-bottom: 4px solid #ADD2C9;
   }
 
   .member-tabset > .nav-tabs > li.open > a, .member-tabset > .nav-tabs > li:hover > a {
@@ -182,7 +182,7 @@ h4 {
   }
 
   .member-tabset > .nav-tabs > li.active {
-    border-bottom: 4px solid #E95420;
+    border-bottom: 4px solid #40514E;
     position: relative;
   }
 
@@ -202,3 +202,19 @@ h4 {
     border-top: 1px solid #eee;
     padding: 15px 0;
   }
+.favbgcolor{
+  background-color: #E4F9F5 !important;
+}
+.favbgcolorbtnmembercard{
+  background-color: #3AD3CD !important;
+}
+.favbgcolorbtnmembercardfoter{
+  background-color: #D8E3E7 !important;
+}
+
+.mypagination::ng-deep .page-item.active .page-link {
+  z-index: 1;
+  color: #FFFFFF;
+  background-color:red !important;
+  border-color: #009DA0;
+}

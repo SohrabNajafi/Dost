@@ -1,12 +1,12 @@
 <div class="row center mx-0 mb-4" style="padding-top: 10px !important;">
     <div class="btn-group " name='container'>
-        <button class="btn btn-primary" btnRadio='Unread' [(ngModel)]="container" (click)="loadMessages()">
+        <button class="btn btn-info" btnRadio='Unread' [(ngModel)]="container" (click)="loadMessages()">
             <i class="fa fa-envelope"></i> خوانده نشده ها
         </button>
-        <button class="btn btn-primary" btnRadio='Inbox' [(ngModel)]="container" (click)="loadMessages()">
+        <button class="btn btn-info" btnRadio='Inbox' [(ngModel)]="container" (click)="loadMessages()">
             <i class="fa fa-envelope-open"></i> پیام های دریافتی
         </button>
-        <button class="btn btn-primary" btnRadio='Outbox' [(ngModel)]="container" (click)="loadMessages()">
+        <button class="btn btn-info" btnRadio='Outbox' [(ngModel)]="container" (click)="loadMessages()">
             <i class="fa fa-paper-plane"></i> پیام های ارسالی
         </button>
     </div>
@@ -18,7 +18,7 @@
 
 <div class="row mt-5 mx-2" *ngIf="messages!.length > 0" dir="rtl">
     <table class="table table-hover" style="cursor: pointer">
-        <tr>
+        <tr style="background-color: #ADD2C9;">
             <th style="width: 20%">از / به</th>
             <th style="width: 40%;text-align: center !important;">پیام</th>
             <th style="width: 20%;text-align: center !important;">ارسال / دریافت</th>
@@ -42,8 +42,8 @@
             <td class="text-center">{{message.content}}</td>
             <td class="text-center">{{message.messageSentP }}</td>
             <td class="text-center">
-                <button (click)="$event.stopPropagation()" (click)="deleteMessage(message.id)"
-                    class='btn btn-danger'>حذف</button>
+                <button (click)="$event.stopPropagation()" (click)="deleteMessage(message.id)" class='btn  btn-sm'
+                    style="background-color: #FF6138;"><i class="fa fa-trash"></i></button>
             </td>
         </tr>
     </table>

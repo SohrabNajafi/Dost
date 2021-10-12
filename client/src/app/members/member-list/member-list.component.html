@@ -1,5 +1,5 @@
-<div style="background-color:#fef9f0;">
-    <div class="container" dir="rtl">
+<div>
+    <div class="container" dir="rtl" style="padding-top: 10px !important;">
         <form #form="ngForm" class="form-inline mb-3" (ngSubmit)="loadMembers()" autocomplete="off">
             <div class="form-group">
                 <label> از سن : </label>
@@ -23,15 +23,19 @@
                 </select>
             </div>
 
-            <button class="btn btn-primary mr-2" type="submit">اعمال فیلتر</button>
-            <button (click)="resetFilters()" class="btn btn-info mr-2" type="submit">حذف فیلتر</button>
+            <button class="btn  mr-2" type="submit" style="background-color: #51C4D3;color: #0A3442;">اعمال
+                فیلتر</button>
+            <button (click)="resetFilters()" class="btn mr-2" type="submit"
+                style="background-color: #51C4D3;color: #0A3442;">حذف
+                فیلتر</button>
             <div class="col">
-                <div class="btn-group float-right">
-                    <button type="button" class="btn btn-primary" name='orderBy' (click)="loadMembers()"
-                        btnRadio='lastActive' [(ngModel)]="userParams.orderBy">آخرین بازدید</button>
+                <div class="btn-group float-right" dir="ltr">
+                    <button type="button" class="btn btn-info" name='orderBy' (click)="loadMembers()"
+                        btnRadio='lastActive' [(ngModel)]="userParams.orderBy">آخرین
+                        بازدید</button>
 
-                    <button type="button" class="btn btn-primary" name='orderBy' (click)="loadMembers()"
-                        btnRadio='created' [(ngModel)]="userParams.orderBy">افراد جدید</button>
+                    <button type="button" class="btn btn-info" name='orderBy' (click)="loadMembers()" btnRadio='created'
+                        [(ngModel)]="userParams.orderBy">افراد جدید</button>
                 </div>
             </div>
 
@@ -56,6 +60,5 @@
             </pagination>
         </div>
     </div>
-
 
 </div>

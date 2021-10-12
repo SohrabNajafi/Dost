@@ -7,7 +7,7 @@
 
 
 <div class="form-group" dir="rtl">
-    <mat-datepicker-toggle matSuffix [for]="_Date"></mat-datepicker-toggle>
+    <!-- <mat-datepicker-toggle matSuffix [for]="_Date"></mat-datepicker-toggle> -->
     <input matInput type="text" [class.is-invalid]='ngControl.touched && ngControl.invalid'
         class="form-control text-center input-sm chat-input my-2 w-100" [formControl]='$any(ngControl).control'
         placeholder="{{label}}" [matDatepicker]="_Date">

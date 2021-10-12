@@ -1,12 +1,14 @@
-<div class="row">
+<div class="favbgcolor row">
     <div class="col-12 col-md-6 col-xl-3 col-lg-4 col-sm-6 text-center mt-3" *ngFor="let photo of member.photos">
         <img src="{{photo.url}}" alt="{{photo.url}}" class="img-thumbnail p-1">
         <div class="text-center">
-            <button [disabled]="photo.isMain" (click)="setMainPhoto(photo)"
-                [ngClass]='photo.isMain ? "btn-success active" : "btn-outline-success"'
-                class="btn btn-sm mt-1">پروفایل</button>
-            <button [disabled]="photo.isMain" (click)="deletePhoto(photo.id)" class="btn btn-sm btn-danger mt-1"><i
-                    class="fa fa-trash"></i></button>
+            <div class="btn-group float-center" dir="ltr">
+                <button [disabled]="photo.isMain" (click)="deletePhoto(photo.id)" style="background-color: #5EA3A3;"
+                    class="btn btn-sm  mt-1"><i class="fa fa-trash"></i></button>
+                <button [disabled]="photo.isMain" (click)="setMainPhoto(photo)"
+                    [ngClass]='photo.isMain ? "btn-info active" : "btn-outline-info"'
+                    class="btn btn-sm mt-1">پروفایل</button>
+            </div>
         </div>
     </div>
 </div>
@@ -18,7 +20,7 @@
         <h3>اضافه کردن عکس </h3>
 
         <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropzoneOver}" (fileOver)="fileOverBase($event)"
-            [uploader]="uploader" class="card bg-faded p-3 text-center mb-3 my-drop-zone">
+            [uploader]="uploader" class="FileDrop card bg-faded p-3 text-center mb-3 my-drop-zone">
             <i class="fa fa-upload fa-3x"></i>
             عکس را اینجا بکشید و رها کنید
         </div>

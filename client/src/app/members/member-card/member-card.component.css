@@ -1,19 +1,29 @@
+
+.card{
+    border-radius: 10px 10px 5px 5px !important;
+    box-shadow: 7px 5px 15px grey;
+}
 .card:hover img {
     transform: scale(1.2, 1.2);
     transition-duration: 500ms;
     transition-timing-function: ease-out;
-    opacity: 0.7;
+    opacity: 0.8;
+    border-radius: 10px 10px 0px 0px !important;
+    
 }
 
 .card img {
     transform: scale(1.0, 1.0);
     transition-duration: 500ms;
     transition-timing-function: ease-out;
+    border-radius: 10px 10px 0px 0px !important;
 }
 
 .card-img-wrapper {
     overflow: hidden;
     position: relative;
+    border-radius: 10px 10px 0px 0px !important;
+
 }
 
 .member-icons {
@@ -29,8 +39,14 @@
 .card-img-wrapper:hover .member-icons {
     bottom: 0;
     opacity: 1;
+    border-radius: 10px 10px 0px 0px !important;
+
 }
 
 .animate {
     transition: all 0.3s ease-in-out;
 } 
+
+.card-body{
+    border-radius: 0px 0px 5px 5px !important;
+}
