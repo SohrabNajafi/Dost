@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<div class="row center mt-5" *ngIf="messages?.length === 0">
+<div class="row center mt-5" *ngIf="messages!.length === 0 && !loading">
     <h3>پیامی نداری </h3>
 </div>
 

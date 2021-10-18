@@ -1,0 +1,14 @@
+<div class="row" dir="rtl">
+    <table class="table">
+        <tr style="background-color: #ADD2C9;">
+            <th style="width: 40%;">نام کاربری</th>
+            <th style="width: 30%;">نقش های فعال</th>
+            <th style="width: 30%;"></th>
+        </tr>
+        <tr *ngFor="let user of users">
+            <td>{{user?.username}}</td>
+            <td>{{user?.roles}}</td>
+            <td><button (click)="openRolesModal(user!)" class="btn btn-info">ویرایش نقش ها</button></td>
+        </tr>
+    </table>
+</div>

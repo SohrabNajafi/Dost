@@ -1,0 +1,15 @@
+<h2 style="text-align: center;">پنل ادمین</h2>
+<div class="tab-panel" dir="rtl">
+    <tabset class="member-tabset">
+        <tab heading='مدیریت کاربران' *appHasRole='["Admin"]'>
+            <div class="container text-right">
+                <app-user-management></app-user-management>
+            </div>
+        </tab>
+        <tab heading='مدیریت عکس ها' *appHasRole='["Admin", "Moderator"]'>
+            <div class="container">
+                <app-photo-management dir="ltr"></app-photo-management>
+            </div>
+        </tab>
+    </tabset>
+</div>

@@ -17,15 +17,19 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink='/messages' routerLinkActive='active'>پیام ها</a>
                     </li>
+                    <li *appHasRole='["Admin", "Moderator"]' class="nav-item">
+                        <a class="nav-link" routerLink='/admin' routerLinkActive='active'>پنل ادمین </a>
+                    </li>
                 </ng-container>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" routerLink='/errors' routerLinkActive='active'>خطاها</a>
-                </li> -->
+                </li>
             </ul>
 
             <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
                 <img src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.username}}">
-                <a class="dropdown-toggle text-light" dropdownToggle>خوش اومدی {{user.username | titlecase}}</a>
+                <a class="dropdown-toggle text-light" dropdownToggle>خوش اومدی {{user.username || user.username |
+                    titlecase}}</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
                     <a routerLink='/member/edit' class="dropdown-item">ویرایش پروفایل</a>
                     <div class="dropdown-divider"></div>
