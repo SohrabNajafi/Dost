@@ -20,7 +20,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     BsDropdownModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-left',
-      preventDuplicates: false,
+      preventDuplicates: true,
 
       // "closeButton": true,
       // "debug": false,

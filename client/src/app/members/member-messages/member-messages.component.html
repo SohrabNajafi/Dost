@@ -1,11 +1,11 @@
 <div class="card">
     <div class="card-body">
-        <div *ngIf="messages?.length === 0">
+        <div *ngIf="(messageService.messageThread$ | async)?.length === 0">
             پیامی نداری ... بهش یه سلامی بکن
         </div>
 
-        <ul *ngIf="messages.length > 0" class="chat">
-            <li *ngFor="let message of messages">
+        <ul *ngIf="(messageService.messageThread$ | async)!.length > 0" class="chat">
+            <li *ngFor="let message of (messageService.messageThread$ | async)">
                 <div>
                     <span class="chat-img float-right">
                         <img class="rounded-circle" src="{{message.senderPhotoUrl || './assets/user.png'}}"
@@ -38,7 +38,8 @@
                 <input name="messageContent" style="color: black !important;" required [(ngModel)]="messageContent"
                     type="text" class="form-control input-sm" placeholder="یک پیام مخفی بفرست">
                 <div class="input-group-append">
-                    <button [disabled]="!messageForm.valid" class="btn btn-primary" type="submit">ارسال</button>
+                    <button style="border-radius: 8px 0 0 8px;" [disabled]="!messageForm.valid" class="btn btn-primary"
+                        type="submit">ارسال</button>
                 </div>
             </div>
         </form>

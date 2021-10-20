@@ -18,5 +18,7 @@ namespace API.DTOs
         public DateTime MessageSent { get; set; }
 #nullable enable
         public string? MessageSentP { get; set; }
+
+        public int unreadMessagesL { get; set; }
     }
 }

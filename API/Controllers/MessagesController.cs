@@ -25,35 +25,35 @@ namespace API.Controllers
             _userRepository = userRepository;
         }
 
-        [HttpPost]
-        public async Task<ActionResult<MessageDto>> CreateMessage(CreateMessageDto createMessageDto)
-        {
-            var username = User.GetUsername();
+        // [HttpPost]
+        // public async Task<ActionResult<MessageDto>> CreateMessage(CreateMessageDto createMessageDto)
+        // {
+        //     var username = User.GetUsername();
 
-            if (username == createMessageDto.RecipientUsername.ToLower())
-                return BadRequest(" !!! به خودت نمی تونی پیام بفرستی ");
+        //     if (username == createMessageDto.RecipientUsername.ToLower())
+        //         return BadRequest    
 
-            var sender = await _userRepository.GetUserByUsernameAsync(username);
-            var recipient = await _userRepository.GetUserByUsernameAsync(createMessageDto.RecipientUsername);
+        //     var sender = await _userRepository.GetUserByUsernameAsync(username);
+        //     var recipient = await _userRepository.GetUserByUsernameAsync(createMessageDto.RecipientUsername);
 
-            if (recipient == null) return NotFound();
+        //     if (recipient == null) return NotFound();
 
-            var message = new Message
-            {
-                Sender = sender,
-                Recipient = recipient,
-                SenderUsername = sender.UserName,
-                RecipientUsername = recipient.UserName,
-                Content = createMessageDto.Content
-            };
+        //     var message = new Message
+        //     {
+        //         Sender = sender,
+        //         Recipient = recipient,
+        //         SenderUsername = sender.UserName,
+        //         RecipientUsername = recipient.UserName,
+        //         Content = createMessageDto.Content
+        //     };
 
-            _messageRepository.AddMessage(message);
+        //     _messageRepository.AddMessage(message);
 
-            if (await _messageRepository.SaveAllAsync()) return Ok(_mapper.Map<MessageDto>(message));
+        //     if (await _messageRepository.SaveAllAsync()) return Ok(_mapper.Map<MessageDto>(message));
 
-            return BadRequest("هنگام ارسال پیام یه مشکلی به وجود اومد.");
+        //     return BadRequest("هنگام ارسال پیام یه مشکلی به وجود اومد.");
 
-        }
+        // }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MessageDto>>> GetMessagesForUser([FromQuery]

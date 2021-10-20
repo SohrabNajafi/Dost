@@ -4,6 +4,9 @@
             <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}"
                 class="card-img-top img-thumbnail">
             <div class="card-body">
+                <div class="mb-2" *ngIf="(presence.onlineUsers$ | async)?.includes(member.username)">
+                    <i class="fa fa-user-circle text-success"></i> آنلاین
+                </div>
                 <div>
                     <strong>مکان:</strong>
                     <p>{{member.city}}, {{member.country}}</p>
@@ -12,7 +15,7 @@
                     <strong>سن:</strong>
                     <p>{{member.age}}</p>
                 </div>
-                <div>
+                <div *ngIf="!(presence.onlineUsers$ | async)?.includes(member.username)">
                     <strong>آخرین بازدید :</strong>
                     <p>{{member.lastActiveP}}</p>
                 </div>
@@ -23,7 +26,7 @@
             </div>
             <div class="card-footer">
                 <div class="btn-group d-flex float-center" dir="ltr">
-                    <button class="btn btn-danger">پسندیدن</button>
+                    <button (click)="addLike(member!)" class="btn btn-danger">پسندیدن</button>
                     <button (click)="selectTab(3)" class="btn btn-info">یه پیام بفرست</button>
                 </div>
             </div>
@@ -48,7 +51,7 @@
                     style="display: inline-block; margin-bottom: 20px;"></ngx-gallery>
             </tab>
             <tab heading='پیام ها' (selectTab)="onTabActivated($event)">
-                <app-member-messages [messages]="messages" [username]="member.username"></app-member-messages>
+                <app-member-messages [username]="member.username"></app-member-messages>
             </tab>
         </tabset>
     </div>

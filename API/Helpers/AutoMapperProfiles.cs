@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using API.DTOs;
 using API.Entities;
@@ -25,6 +26,7 @@ namespace API.Helpers
                     src.Recipient.Photos.FirstOrDefault(x => x.IsMain).Url))
                 .ForMember(dest => dest.DateReadP, opt => opt.MapFrom(src => src.DateRead == null ? "" : src.DateRead.ToShamsiWithTime()))
                 .ForMember(dest => dest.MessageSentP, opt => opt.MapFrom(src => src.MessageSent.ToShamsiWithTime()));
+            CreateMap<DateTime, DateTime>().ConvertUsing(d => DateTime.SpecifyKind(d, DateTimeKind.Local));
         }
     }
 }
