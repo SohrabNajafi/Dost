@@ -13,7 +13,7 @@
         <h2>{{predicate === 'liked' ? 'افرادی که من لایک کردم' : 'افرادی که منو لایک کردن'}}</h2>
     </div>
     <div class="row px-5 py-5 " dir="rtl" style="width: 100%!important; ">
-        <div *ngFor="let member of members" class="col-12 col-md-4 col-xl-2 col-lg-3 col-sm-6">
+        <div *ngFor="let member of members" class="col-6 col-md-4 col-xl-2 col-lg-3 col-sm-6">
             <app-member-card [member]="member"></app-member-card>
         </div>
     </div>

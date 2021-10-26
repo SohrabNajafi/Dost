@@ -26,10 +26,8 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
-import { NgPersianDatepickerModule } from 'ng-persian-datepicker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MaterialPersianDateAdapter, PERSIAN_DATE_FORMATS } from './shared/material.persian-date.adapter';
 import { PersianTimeAgoPipe } from 'persian-time-ago-pipe';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
@@ -37,6 +35,13 @@ import { HasRoleDirective } from './_directives/has-role.directive';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
 import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
 import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
+import { ConfirmDialogComponent } from './modals/confirm-dialog/confirm-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
+import { JalaliMomentDateAdapter } from './shared/mat-core/jalali-moment-date-adapter';
+import { JALALI_MOMENT_FORMATS } from './shared/mat-core/jalali_moment_formats';
+import { NgPersianDatepickerModule } from 'ng-persian-datepicker';
+
 
 
 
@@ -65,6 +70,7 @@ import { PhotoManagementComponent } from './admin/photo-management/photo-managem
     UserManagementComponent,
     RolesModalComponent,
     PhotoManagementComponent,
+    ConfirmDialogComponent,
 
   ],
   imports: [
@@ -77,18 +83,21 @@ import { PhotoManagementComponent } from './admin/photo-management/photo-managem
     SharedModule,
     NgxSpinnerModule,
     DatepickerModule,
-    NgPersianDatepickerModule,
     MatDatepickerModule,
-
+    MatFormFieldModule,
+    CommonModule,
+    NgPersianDatepickerModule,
 
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
-    { provide: DateAdapter, useClass: MaterialPersianDateAdapter, deps: [MAT_DATE_LOCALE] },
-    { provide: MAT_DATE_FORMATS, useValue: PERSIAN_DATE_FORMATS }
+    //{ provide: DateAdapter, useClass: JalaliMomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    //{ provide: MAT_DATE_FORMATS, useValue: JALALI_MOMENT_FORMATS },
   ],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }

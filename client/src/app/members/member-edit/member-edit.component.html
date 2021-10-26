@@ -1,4 +1,4 @@
-<div class="row px-1 " dir="rtl" *ngIf="member" style="width: 98%;">
+<div class="row fulldiv" dir="rtl" *ngIf="member" style="width: 98%;margin: 0;">
     <div class="col-12 col-md-5 col-xl-3 col-lg-4 col-sm-11 text-center mt-3">
         <h1 class="textdark"> پروفایل شما </h1>
     </div>
@@ -41,16 +41,16 @@
         <tabset class="member-tabset text-justify">
             <tab heading='درباره {{member.knownAs}}'>
                 <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
-                    <h4 class="text-right mt-5">درباره </h4>
-                    <textarea class="form-control textdark" [(ngModel)]="member.introduction" name="introduction"
-                        rows="6"></textarea>
-                    <h4 class="text-right mt-3"> به دنبال</h4>
-                    <textarea class="form-control textdark" [(ngModel)]="member.lookingFor" name="lookingFor"
-                        rows="6"></textarea>
-                    <h4 class="text-right mt-3">علاقه ها</h4>
-                    <textarea class="form-control textdark" [(ngModel)]="member.interests" name="interests"
-                        rows="6"></textarea>
-                    <h4 class="text-right mt-3"> اطلاعات مکان: </h4>
+                    <h4 class="text-right mt-5 mr-2">درباره </h4>
+                    <textarea class="form-control textdark mr-1" style="width: 99%;" [(ngModel)]="member.introduction"
+                        name="introduction" rows="6"></textarea>
+                    <h4 class="text-right mt-3 mr-2"> به دنبال</h4>
+                    <textarea class="form-control textdark mr-1" style="width: 99%;" [(ngModel)]="member.lookingFor"
+                        name="lookingFor" rows="6"></textarea>
+                    <h4 class="text-right mt-3 mr-2">علاقه ها</h4>
+                    <textarea class="form-control textdark mr-1" style="width: 99%;" [(ngModel)]="member.interests"
+                        name="interests" rows="6"></textarea>
+                    <h4 class="text-right mt-3 mr-2"> اطلاعات مکان: </h4>
                     <div class="form-inline">
                         <label for="city">کشور: </label>
                         <input [(ngModel)]="member.city" type="text" name="city" class="form-control mx-2 textdark">

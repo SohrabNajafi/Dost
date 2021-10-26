@@ -12,7 +12,6 @@ import { PresenceService } from './_services/presence.service';
 })
 export class AppComponent implements OnInit {
   title = 'دوست';
-  Users: any;
   constructor(private accountService: AccountService, private presence: PresenceService) { }
   ngOnInit() {
     this.setCurrentUser();
@@ -22,7 +21,7 @@ export class AppComponent implements OnInit {
 
   setCurrentUser() {
     //const user: User = JSON.parse(localStorage.getItem('user'));
-    const user: User = JSON.parse(localStorage.getItem('user') || '{}');
+    const user: User = JSON.parse(localStorage.getItem('user')!);
     if (user) {
       this.accountService.setCurrentUser(user);
       this.presence.createHubConnection(user);

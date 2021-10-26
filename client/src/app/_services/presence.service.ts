@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from '../_models/user';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class PresenceService {
   private onlineUsersSource = new BehaviorSubject<string[]>([]);
   onlineUsers$ = this.onlineUsersSource.asObservable();
 
-  constructor(private toastr: ToastrService, private router: Router) { }
+  constructor(private toastr: ToastrService, private router: Router,
+    private MessageService: MessageService) { }
 
   createHubConnection(user: User) {
     this.hubConnection = new HubConnectionBuilder()
@@ -49,6 +51,7 @@ export class PresenceService {
     })
 
     this.hubConnection.on('NewMessageReceived', ({ username, knownAs }) => {
+
       this.toastr.info(knownAs + ' برای شما یک پیام جدید فرستاد!')
         .onTap
         .pipe(take(1))

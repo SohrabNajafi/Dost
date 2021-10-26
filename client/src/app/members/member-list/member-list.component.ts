@@ -23,9 +23,9 @@ export class MemberListComponent implements OnInit {
   constructor(private memberService: MembersService) {
     this.userParams = this.memberService.resetUserParams();
     this.userParams = this.memberService.getUserParams();
+    this.loadMembers();
   }
   ngOnInit(): void {
-    this.loadMembers();
   }
 
   loadMembers() {

@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace API.DTOs
 {
@@ -19,6 +20,11 @@ namespace API.DTOs
 #nullable enable
         public string? MessageSentP { get; set; }
 
-        public int unreadMessagesL { get; set; }
+        [JsonIgnore]
+        public bool SenderDeleted { get; set; }
+
+        [JsonIgnore]
+        public bool RecipientDeleted { get; set; }
+
     }
 }

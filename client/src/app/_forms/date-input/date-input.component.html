@@ -1,16 +1,23 @@
-<!-- <div class="form-group" dir="rtl">
+<div class="form-group" dir="rtl">
     <input type="text" [class.is-invalid]='ngControl.touched && ngControl.invalid'
-        class="form-control text-center input-sm chat-input my-2 w-100" [formControl]='$any(ngControl).control'
-        placeholder="{{label}}" bsDatepicker [bsConfig]='bsConfig' [maxDate]='maxDate'>
-    <div *ngIf="$any(ngControl).control.errors?.required" class="invalid-feedback"> {{label}} یادت نره !!!</div>
+        class="form-control text-center input-sm chat-input my-2 w-100" [formControl]='$any(ngControl.control)'
+        #datepickerInput placeholder="{{label}}">
+    <ng-persian-datepicker [input]="datepickerInput" [dateInitValue]="false" [timeEnable]="false" [uiTheme]="'dark'"
+        [timeMeridian]="true" [dateFormat]="'jYYYY-jMM-jDD'" [dateMax]="maxDate" [uiTodayBtnEnable]="false">
+    </ng-persian-datepicker>
+    <div *ngIf="ngControl.control?.errors?.required" class="invalid-feedback">{{label}} یادت نره !!!</div>
+</div>
+
+
+<!-- <div class="form-group" dir="rtl">
+    <mat-datepicker-toggle matSuffix [for]="_Date"></mat-datepicker-toggle>
+    <input type="text" [class.is-invalid]='ngControl.touched && ngControl.invalid'
+        class="form-control text-center input-sm chat-input my-2 w-100" [formControl]='$any(ngControl.control)'
+        placeholder="{{label}}" [matDatepicker]="_Date">
+    <mat-datepicker #_Date></mat-datepicker>
+    <div *ngIf="ngControl.control?.errors?.required" class="invalid-feedback"> {{label}} یادت نره !!!</div>
 </div> -->
 
 
-<div class="form-group" dir="rtl">
-    <!-- <mat-datepicker-toggle matSuffix [for]="_Date"></mat-datepicker-toggle> -->
-    <input matInput type="text" [class.is-invalid]='ngControl.touched && ngControl.invalid'
-        class="form-control text-center input-sm chat-input my-2 w-100" [formControl]='$any(ngControl).control'
-        placeholder="{{label}}" [matDatepicker]="_Date">
-    <mat-datepicker #_Date></mat-datepicker>
-    <div *ngIf="$any(ngControl).control.errors?.required" class="invalid-feedback"> {{label}} یادت نره !!!</div>
-</div>
+<!-- <input type="text" #datepickerInput />
+<ng-persian-datepicker [input]="datepickerInput" [uiTheme]="'dark'" [timeMeridian]="true"></ng-persian-datepicker> -->

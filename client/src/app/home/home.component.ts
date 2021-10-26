@@ -23,12 +23,17 @@ export class HomeComponent implements OnInit {
 
   login() {
     debugger;
-    this.accountService.login(this.model).subscribe(response => {
-      this.router.navigateByUrl('/members');
-      // }, error => {
-      //   console.log(error);
-      //   this.toastr.error(error.error);
-    })
+    if (this.model.username != null && this.model.username != undefined &&
+      this.model.password != null && this.model.password != undefined) {
+      this.accountService.login(this.model).subscribe(response => {
+        this.router.navigateByUrl('/members');
+        // }, error => {
+        //   console.log(error);
+        //   this.toastr.error(error.error);
+      })
+    } else {
+      this.toastr.error(" . نام کابری یا رمز عبور خود را وارد کنید ");
+    }
   }
 
   registerToggle() {

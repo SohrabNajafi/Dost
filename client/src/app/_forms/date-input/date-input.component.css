@@ -1,0 +1,18 @@
+.mat-datepicker-toggle {
+    position: absolute !important;
+  }
+.betternet-wrapper{
+    display: none !important;
+}
+.cdk-overlay-container{
+    position:absolute !important;
+    width: 300px !important;
+}
+
+
+.cdk-live-announcer-element{
+display: none !important;
+  }
+.cdk-visually-hidden{
+    display: none !important;
+}

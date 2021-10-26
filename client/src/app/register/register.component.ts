@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
   registerForm: FormGroup;
   maxDate: Date;
+  maxDatePN: number;
   validationErrors: string[] = [];
 
   constructor(private accountService: AccountService,
@@ -23,7 +24,9 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.intitializeForm();
     this.maxDate = new Date();
-    this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
+    this.maxDate.setFullYear(this.maxDate.getFullYear() + 6);
+    this.maxDatePN = this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
+
   }
 
   intitializeForm() {
@@ -35,7 +38,7 @@ export class RegisterComponent implements OnInit {
       city: ['', Validators.required],
       country: ['', Validators.required],
       password: ['', [Validators.required,
-      Validators.minLength(4), Validators.maxLength(8)]],
+      Validators.minLength(6), Validators.maxLength(10)]],
       confirmPassword: ['', [Validators.required, this.matchValues('password')]]
     })
   }
@@ -59,6 +62,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    debugger;
     this.accountService.register(this.registerForm.value).subscribe(response => {
       this.router.navigateByUrl('/members');
     }, error => {

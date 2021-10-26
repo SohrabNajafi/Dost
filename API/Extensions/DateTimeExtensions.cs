@@ -31,7 +31,7 @@ namespace API.Extensions
 
         public static DateTime ToMiladi(this string SDate)
         {
-            SDate = SDate.Replace("/", "");
+            SDate = SDate.Replace("/", "").Replace("-", "").Replace("_", "");
             PersianCalendar p = new PersianCalendar();
             int Year = int.Parse(SDate.Substring(0, 4));
             int Month = int.Parse(SDate.Substring(4, 2));

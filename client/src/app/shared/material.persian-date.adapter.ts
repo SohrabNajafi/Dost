@@ -1,87 +1,124 @@
+import * as moment from 'jalali-moment';
 import { DateAdapter } from '@angular/material/core';
-import * as jalaliMoment from "jalali-moment";
 
-export const PERSIAN_DATE_FORMATS = {
-    parse: {
-        dateInput: "jYYYY/jMM/jDD"
-    },
-    display: {
-        dateInput: "jYYYY/jMM/jDD",
-        monthYearLabel: "jYYYY jMMMM",
-        dateA11yLabel: "jYYYY/jMM/jDD",
-        monthYearA11yLabel: "jYYYY jMMMM"
+/** Creates an array and fills it with values. */
+function range<T>(length: number, valueFunction: (index: number) => T): T[] {
+    const valuesArray = Array(length);
+    for (let i = 0; i < length; i++) {
+        valuesArray[i] = valueFunction(i);
     }
-};
+    return valuesArray;
+}
 
-export class MaterialPersianDateAdapter extends DateAdapter<jalaliMoment.Moment> {
+export class JalaliMomentDateAdapter extends DateAdapter<moment.Moment> {
 
     constructor() {
+        // @Optional() @Inject(MAT_DATE_LOCALE) dateLocale: string
         super();
-        super.setLocale("fa");
+        // this.setLocale(dateLocale || jmoment.locale(dateLocale));
+        super.setLocale('fa');
     }
 
-    getYear(date: jalaliMoment.Moment): number {
+
+    /**
+     * returns year in jalali calendar system.
+     */
+    getYear(date: moment.Moment): number {
         return this.clone(date).jYear();
     }
 
-    getMonth(date: jalaliMoment.Moment): number {
+    /**
+     * returns month in jalali calendar system.
+     */
+    getMonth(date: moment.Moment): number {
         return this.clone(date).jMonth();
     }
 
-    getDate(date: jalaliMoment.Moment): number {
+    /**
+     * returns day in jalali calendar system.
+     */
+    getDate(date: moment.Moment): number {
         return this.clone(date).jDate();
     }
 
-    getDayOfWeek(date: jalaliMoment.Moment): number {
+    /**
+     * returns Day Of Week in jalali calendar system.
+     */
+    getDayOfWeek(date: moment.Moment): number {
         return this.clone(date).day();
     }
 
-    getMonthNames(style: "long" | "short" | "narrow"): string[] {
+    /**
+     * returns Month Names in jalali calendar system.
+     * most of the time we use long format. short or narrow format for month names is a little odd.
+     */
+    getMonthNames(style: 'long' | 'short' | 'narrow'): string[] {
         switch (style) {
-            case "long":
-            case "short":
-                return jalaliMoment.localeData("fa").jMonths().slice(0);
-            case "narrow":
-                return jalaliMoment.localeData("fa").jMonthsShort().slice(0);
+            case 'long':
+            case 'short':
+                return moment.localeData('fa').jMonths().slice(0);
+            case 'narrow':
+                return moment.localeData('fa').jMonthsShort().slice(0);
         }
     }
 
+    /**
+     * borrowed from angular material code.
+     */
     getDateNames(): string[] {
-        const valuesArray = Array(31);
-        for (let i = 0; i < 31; i++) {
-            valuesArray[i] = String(i + 1);
-        }
-        return valuesArray;
+        return range(31, i => String(i + 1));
+        // return this._localeData.dates;
     }
 
-    getDayOfWeekNames(style: "long" | "short" | "narrow"): string[] {
+    /**
+     * returns Day Of Week names in jalali calendar system.
+     */
+    getDayOfWeekNames(style: 'long' | 'short' | 'narrow'): string[] {
         switch (style) {
-            case "long":
-                return jalaliMoment.localeData("fa").weekdays().slice(0);
-            case "short":
-                return jalaliMoment.localeData("fa").weekdaysShort().slice(0);
-            case "narrow":
-                return ["ی", "د", "س", "چ", "پ", "ج", "ش"];
+            case 'long':
+                return moment.localeData('fa').weekdays().slice(0);
+            case 'short':
+                return moment.localeData('fa').weekdaysShort().slice(0);
+            case 'narrow':
+                return ['ی', 'د', 'س', 'چ', 'پ', 'ج', 'ش'];
+            // return moment.localeData('fa').weekdaysMin().slice(0);
         }
     }
 
-    getYearName(date: jalaliMoment.Moment): string {
+    /**
+     * returns year in jalali calendar system.
+     */
+    getYearName(date: moment.Moment): string {
         return this.clone(date).jYear().toString();
     }
 
+    /**
+     * returns first day of week in jalali calendar system.
+     * first day of week is saturday, شنبه
+     */
     getFirstDayOfWeek(): number {
-        return jalaliMoment.localeData("fa").firstDayOfWeek();
+        return moment.localeData('fa').firstDayOfWeek();
+        // return 6;
     }
 
-    getNumDaysInMonth(date: jalaliMoment.Moment): number {
+    /**
+     * returns Number of Days In Month in jalali calendar system.
+     */
+    getNumDaysInMonth(date: moment.Moment): number {
         return this.clone(date).jDaysInMonth();
     }
 
-    clone(date: jalaliMoment.Moment): jalaliMoment.Moment {
-        return date.clone().locale("fa");
+    clone(date: moment.Moment): moment.Moment {
+        return date.clone().locale('fa');
     }
 
-    createDate(year: number, month: number, date: number): jalaliMoment.Moment {
+    /**
+     * Pass 3 number in jalali calendar system to this function and it returns a moment object
+     * @param year jalali year
+     * @param month zero indexed jalali month
+     * @param date jalali day
+     */
+    createDate(year: number, month: number, date: number): moment.Moment {
         if (month < 0 || month > 11) {
             throw Error(
                 `Invalid month index "${month}". Month index has to be between 0 and 11.`
@@ -90,11 +127,11 @@ export class MaterialPersianDateAdapter extends DateAdapter<jalaliMoment.Moment>
         if (date < 1) {
             throw Error(`Invalid date "${date}". Date has to be greater than 0.`);
         }
-        const result = jalaliMoment()
+        const result = moment()
             .jYear(year).jMonth(month).jDate(date)
             .hours(0).minutes(0).seconds(0).milliseconds(0)
-            .locale("fa");
-
+            .locale('fa');
+        // Check that the date wasn't above the upper bound for the month, causing the month to overflow
         if (this.getMonth(result) !== month) {
             throw Error(`Invalid date ${date} for month with index ${month}.`);
         }
@@ -104,63 +141,84 @@ export class MaterialPersianDateAdapter extends DateAdapter<jalaliMoment.Moment>
         return result;
     }
 
-    today(): jalaliMoment.Moment {
-        return jalaliMoment().locale("fa");
+    today(): moment.Moment {
+        return moment().locale('fa');
     }
 
-    parse(value: any, parseFormat: string | string[]): jalaliMoment.Moment | null {
-        if (value && typeof value === "string") {
-            return jalaliMoment(value, parseFormat, "fa");
+    parse(value: any, parseFormat: string | string[]): moment.Moment | null {
+        if (value && typeof value === 'string') {
+            const result = moment(value, parseFormat, 'fa');
+            return result;
         }
-        return value ? jalaliMoment(value).locale("fa") : null;
+        return value ? moment(value).locale('fa') : null;
     }
 
-    format(date: jalaliMoment.Moment, displayFormat: string): string {
+    format(date: moment.Moment, displayFormat: string): string {
         date = this.clone(date);
         if (!this.isValid(date)) {
-            throw Error("JalaliMomentDateAdapter: Cannot format invalid date.");
+            throw Error('JalaliMomentDateAdapter: Cannot format invalid date.');
         }
         return date.format(displayFormat);
     }
 
-    addCalendarYears(date: jalaliMoment.Moment, years: number): jalaliMoment.Moment {
-        return this.clone(date).add(years, "jYear");
+    addCalendarYears(date: moment.Moment, years: number): moment.Moment {
+        return this.clone(date).add(years, 'jYear');
     }
 
-    addCalendarMonths(date: jalaliMoment.Moment, months: number): jalaliMoment.Moment {
-        return this.clone(date).add(months, "jmonth");
+    addCalendarMonths(date: moment.Moment, months: number): moment.Moment {
+        return this.clone(date).add(months, 'jmonth');
     }
 
-    addCalendarDays(date: jalaliMoment.Moment, days: number): jalaliMoment.Moment {
-        return this.clone(date).add(days, "jDay");
+    addCalendarDays(date: moment.Moment, days: number): moment.Moment {
+        return this.clone(date).add(days, 'jDay');
     }
 
-    toIso8601(date: jalaliMoment.Moment): string {
+
+    toIso8601(date: moment.Moment): string {
         return this.clone(date).format();
     }
 
     isDateInstance(obj: any): boolean {
-        return jalaliMoment.isMoment(obj);
+        return moment.isMoment(obj);
     }
 
-    isValid(date: jalaliMoment.Moment): boolean {
+    isValid(date: moment.Moment): boolean {
         return this.clone(date).isValid();
+        // return date.isValid();
     }
 
-    invalid(): jalaliMoment.Moment {
-        return jalaliMoment.invalid();
+    invalid(): moment.Moment {
+        return moment.invalid();
     }
 
-    deserialize(value: any): jalaliMoment.Moment | null {
+    /**
+     * Returns the given value if given a valid Moment or null. Deserializes valid ISO 8601 strings
+     * (https://www.ietf.org/rfc/rfc3339.txt) and valid Date objects into valid Moments and empty
+     * string into null. Returns an invalid date for all other values.
+     */
+
+    /**
+     * Attempts to deserialize a value to a valid date object. This is different from parsing in that
+     * deserialize should only accept non-ambiguous, locale-independent formats (e.g. a ISO 8601
+     * string). The default implementation does not allow any deserialization, it simply checks that
+     * the given value is already a valid date object or null. The `<mat-datepicker>` will call this
+     * method on all of it's `@Input()` properties that accept dates. It is therefore possible to
+     * support passing values from your backend directly to these properties by overriding this method
+     * to also deserialize the format used by your backend.
+     * @param value The value to be deserialized into a date object.
+     * @returns The deserialized date object, either a valid date, null if the value can be
+     *     deserialized into a null date (e.g. the empty string), or an invalid date.
+     */
+    deserialize(value: any): moment.Moment | null {
         let date;
         if (value instanceof Date) {
-            date = jalaliMoment(value);
+            date = moment(value);
         }
-        if (typeof value === "string") {
+        if (typeof value === 'string') {
             if (!value) {
                 return null;
             }
-            date = jalaliMoment(value).locale("fa");
+            date = moment(value, moment.ISO_8601).locale('fa');
         }
         if (date && this.isValid(date)) {
             return date;
